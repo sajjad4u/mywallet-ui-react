@@ -146,7 +146,7 @@ export const TransactionPage: React.FC = () => {
       try {
         setLoading(prev => ({ ...prev, categories: true }));
         setError(prev => ({ ...prev, categories: null }));
-        const categoriesResponse = await apiClient.get('/mywallet/category/all');
+        const categoriesResponse = await apiClient.get('/category/all');
         const fetchedCategories = categoriesResponse.data
           .filter((category: any) => category.type === 'INC' || category.type === 'EXP')
           .map((category: any) => ({
@@ -171,7 +171,7 @@ export const TransactionPage: React.FC = () => {
       try {
         setLoading(prev => ({ ...prev, accounts: true }));
         setError(prev => ({ ...prev, accounts: null }));
-        const accountsResponse = await apiClient.get('/mywallet/account/all');
+        const accountsResponse = await apiClient.get('/account/all');
         const fetchedAccounts = accountsResponse.data.map((account: any) => ({
           accountId: account.id,
           accountName: account.name,
@@ -195,7 +195,7 @@ export const TransactionPage: React.FC = () => {
       try {
         setLoading(prev => ({ ...prev, persons: true }));
         setError(prev => ({ ...prev, persons: null }));
-        const personsResponse = await apiClient.get('/mywallet/person/all');
+        const personsResponse = await apiClient.get('/person/all');
         const fetchedPersons = personsResponse.data.map((person: any) => ({
           personId: person.id,
           personName: person.name,
@@ -240,7 +240,7 @@ export const TransactionPage: React.FC = () => {
     try {
       setTransactionsLoading(true);
       setTransactionsError(null);
-      const response = await apiClient.get('/mywallet/transaction/all');
+      const response = await apiClient.get('/transaction/all');
       const fetchedTransactions = response.data.map((transaction: any) => {
         const isIncome = transaction.type === 'INC';
 
@@ -442,7 +442,7 @@ export const TransactionPage: React.FC = () => {
 
   const handleDelete = async (transactionId: number) => {
     try {
-      await apiClient.delete(`/mywallet/transaction/${transactionId}`);
+      await apiClient.delete(`/transaction/${transactionId}`);
 
       // Calculate if we need to adjust the page after deletion
       const currentDisplayedItems = transactions.length - page * rowsPerPage;
