@@ -322,7 +322,7 @@ export const TransactionPage: React.FC = () => {
       // Log the request data for debugging
       console.log('Sending transaction data:', JSON.stringify(transactionData));
 
-      const apiUrl = '/mywallet/transaction/save';
+      const apiUrl = '/transaction/save';
       console.log('API endpoint:', apiUrl);
 
       // Send the request to the server endpoint with explicit headers
